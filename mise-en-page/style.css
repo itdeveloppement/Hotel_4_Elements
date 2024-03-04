@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    position: sticky;
+    background-color: rgba(221, 14, 14, 0.499);
+    height: 80px;
+}
+
+.hero{
+    position: relative;
+}
+.hero div{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 32px;
+    padding: 8px 16px;
+    background-color: blueviolet;
+}
+.responsive{
+    width: 100%;
+    height: auto;
+}
+
+/*Mise en page flexbox*/
+.flex{
+    display: flex;
+    flex-wrap:wrap;
+}
+.flex-reverse{
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+.justify-between{
+    justify-content: space-between;
+}
+.justify-around{
+    justify-content: space-around;
+}
+
+.container-1200{
+    width: 100%;
+    max-width : 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+}
+
+/*Largeur des colonnes*/
+.large-6{
+    width: 48%;
+}
+.large-3{
+    width: 22%;
+}
+
+.cards{
+    height: 150px;
+    background-color: blueviolet;
+    margin-top: 16px;
+}
+
+@media all and (max-width: 500px){
+    .small-12{
+        width: 100%;
+    }
+}
+@media all and (min-width: 501px) and (max-width: 800px){
+    .medium-6{
+        width: 48%;
+    }
+}
+
+

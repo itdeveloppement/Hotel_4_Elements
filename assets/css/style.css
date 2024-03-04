@@ -1,0 +1,806 @@
+/*a tous les éléments*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* 
+    font-family: 'Karla', sans-serif;
+    font-family: 'Playfair Display', serif;
+*/
+
+/*variables*/
+:root{
+    --primaryColor :#363A2B;
+    --secondaryColor :#4F6234;
+    --tertiaryColor :#D9C7B3;
+    --inputColor :#E1D2C2;
+    --bgkColor :#E5E0DC;
+    --playfairFont :'Playfair Display', serif;
+    --karlaFont :'Karla', sans-serif;
+}
+
+/*ELEMENTS COMMUNS A TOUTES LES PAGES */
+
+body {
+    background-color: black;
+    padding: 0 2.5%;
+    position: relative;
+}
+section {
+    background-color: var(--bgkColor);;
+}
+
+/*titre*/
+h1, h2, h3, h4 {
+    font-family: var(--playfairFont);
+    color: var(--primaryColor);
+}
+h1 {
+    font-size: 6rem;
+}
+h2 {
+    font-size: 5rem;
+    margin-bottom: 8%;
+}
+h3 {
+    font-size: 2.5rem;
+    width: 100%;
+    margin: 0% 5.5% 5% 5.5%;   
+}
+h4 {
+    font-size: 2rem;
+    margin: 5% 0 0% 0;
+}
+h5, p {
+    font-family: var(--karlaFont);
+    color: var(--primaryColor);
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+strong {
+    font-weight: inherit;
+}
+video {
+    position: relative;
+    object-fit: cover;
+    width: 100vw;
+}
+
+/*address*/
+address {
+    font-style: normal;
+    line-height: 2;
+}
+address span, .column_center p span, .infos article span, .prix span  {
+    font-weight: bold;
+}
+address>a {
+    font-size: 1em;
+}
+
+/* lien de la navbar */
+a {
+    text-decoration: none;
+    font-family: var(--karlaFont);
+    color: var(--primaryColor);
+    font-size: 1.5rem;
+}
+
+header a:visited {color:var(--primaryColor);}
+header a:link {color:var(--primaryColor);}
+header a:active {color:var(--primaryColor);}
+header a:hover {
+    color:var(--tertiaryColor);
+    transition-duration: 0.5s;    
+}
+
+nav ul li a{
+    font-weight: 600;
+}
+nav ul li{
+    list-style: none;
+    font-family: var(--karlaFont);
+}
+
+/* bouton et link */
+.btn_link {
+    object-fit: cover;
+    padding: 2% 8%;
+    background-color: var(--primaryColor);
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn_button {
+    min-height: 30px;
+    min-width: 150px;
+    object-fit: cover;
+    padding: 1.5% 3%;
+    background-color: var(--primaryColor);
+    color: white;
+    font-size: 1.5rem;
+    font-family: var(--karlaFont);
+    border: none;
+    border-radius: 5px;
+}
+.btn_link:visited, .btn_button:visited {color:white;}
+.btn_link:link, .btn_button:link {color:white;}
+.btn_link:active, .btn_button:active {color:white;}
+.btn_link:hover, .btn_button:hover {
+    background-color: var(--tertiaryColor);
+    transition-duration: 0.5s;    
+}
+
+/*animation image filtre*/
+.img_animation {
+    overflow: hidden; 
+    position: relative;
+}
+.img_animation img {
+    transition: filter 0.3s ease; /* Animation de transition fluide */
+  }
+.img_animation:hover img {
+    filter: grayscale(100%) sepia(20%) saturate(200%) hue-rotate(45deg);
+}
+
+/*marge verticale et lateral*/
+.padding_lateral {
+    padding: 0 10% 0 10%;   
+}
+.air, .terre, .eau, .infos, .conception, .offres, .animation, .createur {
+    padding-top: 10%;
+}
+
+/*flexboxe*/
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.justify_between {
+    justify-content: space-between;
+}
+.justify_around {
+    justify-content: space-around;
+}
+
+/* tailles images, icones et colonne*/
+.width35 {
+    width: 39%;
+}
+.width53 {
+    width: 53%;
+}
+.width63 {
+    width: 67%;
+}
+.width28 {
+    width: 28%;
+}
+
+/* SECTIONS COMMUNES AU DEUX PAGES */
+
+/*header*/
+    header {
+        width: 95vw;
+        height: 80px;
+        position: fixed;
+        top:0;
+        z-index: 2;
+        background-color: rgba(229, 224, 220,0.9);;
+        padding: 0 3%;
+        box-shadow: 0px 3px 5px #888888;
+    }
+    /* header nav gauche */
+    .headerleft {
+        gap:2%;
+        width: 50%;
+        align-items: center;
+    }
+    .headerleft img {
+        width: 100%;
+        display: block; 
+    }
+    .headerleft>a {
+        width: 30%;  
+    }
+    .headerleft nav {
+        width: 60%;
+        padding: 0 5% 0 0%;  
+    }
+
+    /* header nav droite */
+    .headerright {
+        width: 50%;
+        justify-content: end;
+        align-items: center;
+        gap: 10%;
+    }
+    .nav_contact {
+        width: 100px;
+    }
+    .resp_whith {
+        display: none;
+    }
+    .nav_contact ul{
+        gap:30%;
+        justify-content: end;
+    }
+    .nav_contact>ul li{
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: var(--primaryColor);
+    }
+    .nav_contact ul i{
+        font-size: 30px;
+    }
+    .nav_reserver {
+        width: 200px;
+    }
+    .nav_reserver ul{
+        gap:15%;
+        justify-content: end;
+    }
+
+/* section presentation hotel page accueil et page hotel feu*/
+    .paddingleft {
+        padding-left:15%;
+    }
+    .paddingright {
+        padding-right: 15%;
+    }
+    .presentation .width35>p {
+        margin: 8% 0 8% 0;  
+    }
+    .presentation div {
+        align-items: center;
+        gap:1%;
+        font-size: 0.5rem;
+    }
+    .presentation div p {
+        font-size: 1rem;
+    }
+    .width53 img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        height: 80vh;
+    }
+    .width25 img {
+        width: 100%; 
+    }
+
+/* footer*/
+    footer { 
+        padding: 5% 3% 5% 3%;
+        background-color: white;
+    }
+    footer img {
+        width: 55%;
+        display: block; 
+    }
+    /*footer left*/
+    .column_left p  {
+        margin: 5% 0;
+    }
+    .column_left ul {
+        gap: 5%;
+        line-height: 1.5;
+    }
+    .column_left ul i {
+        font-size: 30px;
+    }
+    /*footer center*/
+    footer h4 {
+        margin-bottom: 5%;
+    }
+    footer address {
+        margin-bottom: 5%;
+    }
+
+/*footer right*/
+    .column_right a {
+        font-weight:bold ;
+        margin: 3% 0;
+    }
+    .column_right li {
+        margin: 4.5% 0;
+    }
+
+/*PAGE ACCUEIL*/
+
+/* hero */
+.hero {
+    overflow: hidden; 
+    position: relative;
+    justify-content: center;
+    padding: 0 0 18% 0;
+}
+.hero h3 {
+    font-size: 2rem;
+}
+.hero video {
+    height: 105vh;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 74%;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(30, 30, 30, 0.8)); 
+    z-index: 1;
+}
+.hero h1 {
+    width: 55%;
+    color: var(--tertiaryColor);
+    text-align: right;
+    position: absolute;
+    top:30%;
+    left:38%;
+}
+
+/* hero form*/
+.hero form {
+    width: 60%;
+    background-color: var(--tertiaryColor);
+    border-radius: 20px;
+    padding: 2% 3% 5% 3%;
+    gap: 3%;
+    position: absolute;
+    top:68%;
+    z-index: 1;
+    justify-content: space-around;
+}
+.hero h3 {
+    width: 100%;
+    margin: 0 0 2% 0; 
+}
+.date, .hotel {
+    flex-direction: column;
+    width: 200px; 
+}
+.number {
+    flex-direction: column;
+    width: 200px; 
+}
+.hero button {
+    position: absolute;
+    top:100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+select, input{
+    width: 100%;
+    -webkit-appearance: none;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--inputColor);
+    color: var(--primaryColor);
+    font-size: 1rem;
+    padding: 2%;
+}
+label {
+    width: 100%;
+    font-family: var(--karlaFont);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* conception et architecture */
+.conception h3 {
+    margin-left:0;
+}
+.conception img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.conception p {
+    margin: 5% 0;
+}
+
+/* createur*/
+.createur {
+    padding-bottom: 5%;
+}
+.createur h3 {
+   margin-bottom: 0;
+}
+.createur img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+}
+.createur p {
+    margin: 0 0 5% 0;
+}
+.createur i {
+    font-size: 150px;
+    color: var(--tertiaryColor);
+    position:relative;
+    top:3%;
+}
+
+/*PAGE HOTEL FEU*/
+
+/*presentation*/
+.padding_presentation {
+    padding-top: 10%;
+}
+
+/* les offres  */
+.offres p {
+    margin: 5% 0 5% 0;
+}
+.offres .width35>img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    object-position: center;
+}
+.icones {
+    margin: 5% 0% 5% 0;
+}
+.icones div {
+    width: 50%;
+}
+.icones div>p {
+    padding-left:5% ;
+}
+.prix { 
+    font-size: 25px;
+}
+.aligne_vertical_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.aligne_vertical_column .btn_link {
+    width: 35%;
+}
+
+/*services supplementaire*/
+
+/* carousseul sur la base de travail proposé par **Nicolas** */
+.carousel-container{
+    width : 100%;
+    
+    /*On active le scroll sur X pour voir ce qui dépasse du container*/
+    overflow-x: scroll; 
+    
+    /*Permet d'arreter le scroll au début d'une vignette*/
+    scroll-snap-type: x mandatory;
+
+    /*Ebauche de customisation de la scrollbar (cf documentation si vous voulez aller plus loin)*/
+    scrollbar-color: rgb(134, 134, 134) rgb(225, 225, 225);
+    scrollbar-width: thin;
+    padding: 8px 0;
+}
+.carousel-slides{
+    display: flex;
+    flex-wrap: nowrap;
+    width: fit-content;
+    gap: 16px;
+}
+.carousel-item{
+    /*Permet d'arreter le scroll au début d'une vignette, couplé avec le scroll-snaptype sur le parent*/
+    scroll-snap-align: start;
+    width : 600px;
+    position: relative;
+}
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(30, 30, 30, 0.8)); 
+}
+.carousel-item img{
+    width: 100%;
+    height: auto;
+    display: block;
+    height: 50vh;
+    object-fit: cover;
+    object-position: center;
+}
+.carousel-item div{
+    padding: 50px;
+    position: absolute;
+    bottom:10%;
+    right: 0;
+    width: 80%;
+    justify-content: end;
+    display: flex;
+    flex-direction:column;
+    align-items: end;
+}
+.carousel-item h4,.carousel-item p{
+    color: #fff;
+    text-align: right;
+}
+.carousel-item p {
+    margin: 5% 0 5% 0;
+}
+.carousel-item .activite_prix {
+    font-weight: 600;
+    color: #fff;
+}
+.carousel h4 {
+    margin: 0 0 1% 0;
+    padding-top:5% ;
+}
+.carousel p {
+    margin: 0 0 3% 0;
+}
+.carousel .carousel-item p {
+    margin:4% 0 4% 0 ;
+}
+.carousel .btn_link {
+    width: 40%;
+}
+
+/*video aurore boreale*/
+.animation video {
+    height: 70vh;
+}
+
+/*avis*/
+.avis h4 {
+    width: 100%;
+    padding: 0 5%;
+    margin-bottom: 5%;
+}
+.avis_img {
+    width: 20%;
+}
+.avis_img img{
+    width: 70%;
+    border-radius: 50%;
+}
+.avis_profil {
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+}
+.avis_profil div {
+    width: 100%;
+}
+.avis_profil div img {
+    margin-left: 1%;
+}
+
+.width35>p {
+    margin-top: 5%;
+}
+
+/*infos generales*/
+.horaire {
+    align-items: center;
+    gap: 2%;
+}
+.horaire img {
+    width: 35px;
+}
+.horaire .arrive, .horaire .depart {
+    width: 40%;
+    margin: 0;
+}
+.infos article {
+    align-items: center;
+    gap:2%
+}
+.infos article img {
+    width: 35px;
+}
+.infos article p {
+    width: 80%;
+    margin:1% 0;
+}
+
+/*contact*/
+.contact {
+    padding-top: 3%;
+}
+.contact h4 {
+    margin-left:15%;
+    margin-bottom: 2%;
+    margin-top: 0;
+}
+.map iframe {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.contact address {
+    padding-bottom: 5%;
+    margin-left:15%;
+    margin-top: 3%;
+}
+
+
+/* -- RESPONSIVE -- */
+
+@media screen and (max-width:900px) { 
+
+/* GENERAL*/
+    h2 {
+        font-size: 3rem;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    /* tailles images, icones et colonne*/
+    .width35 {
+        width: 100%;
+    }
+    .width53 {
+        width: 100%;
+    }
+    .air, .terre, .eau, .infos, .conception, .offres, .animation, .createur {
+        padding-top: 5%;
+      }
+
+/* HEADER*/
+
+    /*nav hotel*/
+    .headerleft {
+        width: 60%
+    }
+    .nav_hotel ul {
+        justify-content: space-between;
+    }
+    .nav_hotel li a {
+        font-size: 0.8rem;
+    }
+
+    .headerright {
+        width: 40%
+    }
+    /* nav contact*/
+    .nav_contact {
+        width: 40px
+    }
+    .resp_whith {
+        display: none;
+    }
+    .nav_contact ul {
+        justify-content: space-between;
+        
+    }
+    .nav_contact a i{
+        font-size: 0.8rem; 
+    }
+
+    /* nav reserver*/
+    .nav_reserver {
+        width: 80px;
+    }
+    .nav_reserver ul {
+        justify-content: space-between;
+    
+    }
+    .nav_reserver li a{
+        font-size: 0.8rem;
+    }
+
+/* PAGE ACCUEIL*/
+
+    /* HERO*/
+    .hero h1 {
+        font-size: 3rem;
+        width: 100%;
+        text-align: center;
+        top:30%;
+        left:0%;
+    }
+    .hero form h3 {
+        font-size: 0.8rem;
+    }
+    .hero form {
+        width: 70%;
+        padding-top:5% ;
+        padding-bottom:10% ;
+        justify-content: center;
+        z-index: 1;
+    }
+    .hero h3 {
+        font-size: 1rem ;
+        text-align: center;
+    }
+    select, input{
+        height: 30px; 
+    }
+    label {
+        margin: 3% 0 0 0;
+        text-align: center; 
+    }
+
+    /*  architecture et concepte*/
+    .conception h3 {
+        font-size: 2rem;
+    }
+
+    /* createur */
+    .createur h3 {
+        font-size: 2rem;
+        order: -1;
+        margin-bottom: 5%;
+    }
+    .createur img {
+        height: 40vh;
+    }
+    .img_createur {
+        order: -1;
+    }
+
+/* PAGE HOTEL FEU */
+
+    /* presentation */
+    .presentation .width53 {
+        margin-top: 10%;
+    }
+    .paddingleft {
+        padding-left:10%;
+    }
+    .pad_resp_presentation_left .width35  {
+        padding: 0 10% 0 0;
+        order: 1;
+    }
+    .pad_resp_presentation_right .width35  {
+        padding: 0 0% 0 10%;
+    }
+    .width53 img {
+        height: 30vh;
+    }
+
+    /* offres*/
+    .offres article {
+        margin-bottom: 10%;
+    }
+    .carousel>h4, .carousel>p {
+        margin-right: 10%;
+    }
+
+    /* avis*/
+    .avis h4, .avis h4  {
+        padding: 0;
+    }
+    .avis article {
+        margin-top:5%;
+    }
+
+    /*infos*/
+    .infos {
+        padding-bottom: 10%;
+    }
+    .infos h3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* contact*/
+    .contact h4 {
+        margin: 0 10% 5% 10%;
+    }
+
+/* FOOTER */
+    footer .width28 {
+        width: 100%;
+        margin-top: 10%;
+    }
+    footer {
+    padding:0% 10%    
+    }
+}

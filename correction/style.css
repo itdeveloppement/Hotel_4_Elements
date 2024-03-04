@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* a retenir */
+.responsive {
+    /* prend 100% de l esspave */
+    width: 100%;
+    height: auto;
+}
+
+header {
+    position: sticky;
+    height: 80px;
+}
+
+.hero {
+    position: relative;
+}
+
+.hero div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 8px 10px;
+    background-color: blueviolet;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-reverse {
+    display: flex;
+    flex-wrap: wrap-reverse; /* inverse l'odre des elements*/
+}
+
+.justify.between {
+    justify-content: space-between;
+}
+
+.justify.around {
+    justify-content: space-around;
+}
+
+/* largeur de colonne base 12 colonnes*/
+/* 6 conne = 50% */
+.large-6 {
+    width: 48%;
+}
+
+/* 3 colonne = 25%*/
+.large-3 {
+    width: 22%;
+}
+
+.cards {
+    height: 150px;
+    background-color: rgb(58, 43, 226);
+}
+
+/* a retenir*/
+/* apres 1200px ajoute des marge sur mon ecran*/
+.container1200 {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px; /* pour eviter de toucher les bords*/
+}
+
+
+a integrter dans les media 
+@media all and (max-width:500px) {
+    /* organisation des media avec les colonne */
+    .small-12 {
+        width: 100%;
+    }
+}
+
+@media all and (max-width:800px) {
+    /* organisation des media avec les colonne */
+    .medium-6 {
+        width: 50%;
+    }
+
+}

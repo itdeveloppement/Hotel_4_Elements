@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- titre max 55/65 caracteres -->
+    <title>H&#244;tels de luxe et d'excéptions. Pérou, Brésil, Tailande, Finlande</title>
+    <!-- meta description max 160 caracteres -->
+    <meta name="description" content="
+    Quatres hôtels de luxe, Terre, Eau, Air et Feu, en toute direscretion, parfaitement intégrés dans leurs environnements naturels dans des endroits insolites. En Finlande, en Tailande, au Bresil et au Pérou">
+    <!-- link css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!---fontawesome.com integration icons -->
+    <script src="https://kit.fontawesome.com/98908597c5.js" crossorigin="anonymous"></script>
+    <!-- link font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!-- HEADER -->
+   <header class="flex justify_between">
+        <!-- nav left -->
+        <div class="flex headerleft">
+            <a href="index.html" title="Len ver la page d'accueil"><img src="./assets/images/logo/logo-noir.png" alt="Logo socéié 4 Elements"></a>
+            <nav class="nav_hotel">
+                <ul class="flex justify_around">
+                    <li><a href="hotel_feu.html" title="Lien vers la page Hôte Terre">Feu</a></li>
+                    <li><a href="" title="Lien vers la page Hôte Eau">Air</a></li>
+                    <li><a href="" title="Lien vers la page Hôte Feu">Terre</a></li>
+                    <li><a href="" title="Lien vers la page Hôte Air">Eau</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- nav right -->
+        <div class="flex headerright">
+            <!-- nav contact -->
+            <nav class="nav_contact">
+                <ul class="flex">
+                    <li class="resp_whith">Contact</li>
+                    <li><a href="https://www.instagram.com/" title="Lien vers la page Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com" title="Lien vers la page Facebook"><i class="fa-brands fa-square-facebook"></i></a></li>
+                </ul>
+            </nav>
+            <!-- nav reserver -->
+            <nav class="nav_reserver">
+                <ul class="flex">
+                    <li><a class="btn_link" href="" title="Lien vers la page Reserver">Reserver</a></li>
+                    <li><a href="" title="Lien vers la page Se connecter"><i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- HERO -->
+    <section class="hero flex">
+        <!-- video demarage auto / boucle / pas de son-->
+        <video autoplay loop muted >
+            <source src="./assets/videos/interieur_hotel.mp4" type="video/mp4">
+            Une personne qui marche a coté d'une picine d'interieure
+        </video>
+        <!-- slogan -->
+       <h1>H&#244;tels de luxe et d'exception</h1>
+        <form class="flex">
+            <h3>Rechercher une disponibilité</h3>
+            <!-- liste deroulante hôte -->
+            <div class="flex hotel">
+                <label for="adefinir">Choisir un h&#244;tel</label>
+                <select name="adefinir" id="adefinir">
+                    <!-- pour l'exercice lien avec une balise à sinon il faut traiter le formulaire -->
+                    <option value="">Feu</option>
+                    <option value="">Air</option>
+                    <option value="">Terre</option>
+                    <option value="">Eau</option>
+                </select>
+            </div>
+            <!-- nombre de participants -->
+            <div class="flex number">
+                <label for="adefinir">Nombre de personnes</label>
+                <input type="number" id="adefinir1" name="adefinir" min="1" max="2">
+            </div>
+            <!-- nombre de participants -->
+            <div class="flex date">
+                <label for="adefinir">Choisir une date d'arrivée</label>
+                <input type="date" id="adefinir2" name="adefinir">
+            </div>
+            <button class="btn_button" type="submit">Chercher</button>
+        </form>
+        
+    </section>
+   <main>
+    <!-- PRESENTATION DES QUATRES HOTELS-->
+    <section>
+        <!-- hôte Feu -->
+        <article class="feu flex justify_between presentation paddingleft  pad_resp_presentation_left">
+            <div class="width35">
+                <h2>H&#244;tel Feu</h2>
+                <div class="flex">
+                    <img src="./assets/images/icon/map-pin.svg" alt="Icon positionnement sur une carte">
+                    <p>Finlande</p>
+                </div>
+                <div class="flex post-titre">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-empty.svg" alt="Etoile pleine">
+                    <p>(326 avis)</p>
+                </div>
+                <p><strong>L'h&#251;tel Feu</strong> ne se situe bien s&#251;r pas sur un volcan, mais <strong>en Finlande</strong>.<br>Feu de la terre volcanique crachant non loin de là ses geysers, feu des volcans à l'horizon et, …u des aurores boréales que vous pourrez admirer tous les soirs par le toit vitré de votre chambre.</p>
+                <a class="btn_link" href="./hotel_feu.html"  title="Lien vers la page reserver de l'Hôte Feu">Reserver</a>
+            </div>
+            <!-- carousel -->
+            <div class="flex justify_between width53">
+                <div class="width63 img_animation">
+                    <img  src="./assets/images/hotel_feu_domes.jpg" alt="Plusieurs chambres domes dans la foret avec de la neige ">
+                </div>
+                <div class="width28 img_animation">
+                    <img  src="./assets/images/hotel_feu_chalet.jpg" alt="Chalet avec chambre dome sous la neige ">
+                </div>
+            </div>
+        </article>
+        <!-- hôte Air -->
+        <article class="air flex justify_between presentation paddingright  pad_resp_presentation_right">
+            <div class="flex justify_between width53 ">
+                <div class="width28 img_animation">
+                    <img src="./assets/images/hotel_air_pont.jpg" alt="Plusieurs chambres domes dans la foret avec de la neige ">
+                </div>
+                <div class="width63 img_animation">  
+                    <img src="./assets/images/hotel_air.jpg" alt="Chalet avec chambre dome sous la neige ">
+                </div>
+            </div>
+            <div class="width35">
+                <h2>H&#244;tel Air</h2>
+                <div class="flex">
+                    <img src="./assets/images/icon/map-pin.svg" alt="Icon positionnement sur une carte">
+                    <p>Brésil</p>
+                </div>
+                <div class="flex post-titre">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-empty.svg" alt="Etoile vide">
+                    <p>(326 avis)</p>
+                </div>
+                <p><strong>L'h&#244;tel Air</strong> se situe &#224; la <strong>fronti&#232;re du Br&#233;sil et du P&#233;</strong>.<br>C'est un concept architectural innovant qui a permis une implantation &#224; la c&#238;me de...ineux et cotoyer chaque matin, de votre chambre (avec ou sans piscine), les oiseaux &#224; votre r&#233;veil</p>
+                <a class="btn_link" href="" title="Lien vers la page reserver de l'Hôte Eau">Reserver</a>
+            </div>
+        </article>
+        <!-- Hôte Terre -->
+        <article class="terre flex justify_between presentation paddingleft  pad_resp_presentation_left">
+            <div class="width35">
+                <h2>H&#244;tel Terre</h2>
+                <div class="flex">
+                    <img src="./assets/images/icon/map-pin.svg" alt="Icon positionnement sur une carte">
+                    <p>Thaïlande</p>
+                </div>
+                <div class="flex post-titre">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-empty.svg" alt="Etoile vide">
+                    <p>(326 avis)</p>
+                </div>
+                <p><strong>L'h&#244;tel Terre</strong> situ&#233; dans des grottes naturelles en <strong>Tha&#239;lande</strong>.<br>Retaille&#233;es et am&#233;nag&#233;es avec beaucoup de soin, l'h&#244;tel vous offriront soit la fra&#238;cheur et l'apaisement &#224; pr&#232;s de vingt m&#232; de profondeur, soit un h&#226;vre de paix ouvrant sur l'horizon de la mer au loin.</p>
+                <a class="btn_link" href="" title="Lien vers la page reserver de l'Hôte Terre">Reserver</a>
+            </div>
+            <div class="flex justify_between width53">
+                <div class="width63 img_animation">
+                    <img src="./assets/images/hotel_terre_chambre.jpg" alt="Pliseurs chambres domes dans la foret avec de la neige ">
+                </div>
+                <div class="width28 img_animation">
+                    <img src="./assets/images/hotel_terre_repas.jpg" alt="Chalet avec chambre dome sous la neige ">
+                </div>
+            </div>
+        </article>
+        <!-- hôte Eau -->
+        <article class="eau flex justify_between presentation paddingright pad_resp_presentation_right">
+            <div class="flex justify_between width53">
+                <div class="width28 img_animation">
+                    <img src="./assets/images/hotel_eau_plongeur.jpg" alt="Pliseurs chambres domes dans la foret avec de la neige ">
+                </div>
+                <div class="width63 img_animation"> 
+                    <img src="./assets/images/hotel_eau_chambre.jpg" alt="Chalet avec chambre dome sous la neige ">
+                </div>
+            </div>
+            <div class="width35">
+                <h2>H&#244;tel Eau</h2>
+                <div class="flex">
+                    <img src="./assets/images/icon/map-pin.svg" alt="Icon positionnement sur une carte">
+                    <p>Île du pacifique</p>
+                </div>
+                <div class="flex post-titre">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-full.svg" alt="Etoile pleine">
+                    <img src="./assets/images/icon/star-empty.svg" alt="Etoile vide">
+                    <p>(326 avis)</p>
+                </div>
+                <p><strong>L'H&#244;tel Eau</strong> est situ&#233; sur une i&#238;le de 2 kilome&#232;tres carr&#233;s tre&#232;s exactement e&#233;quidistante de Vladivostok et de Los Angeles. C'est le  <strong>milieu du Pacifique</strong>. Vous y disposerez de votre plage, de votre bateau et de votre majordome priv&#233;s. Votre chambre est un caisson immerg&#233; &#224; deux m&#232;tres sous l'eau.</p>
+                <a class="btn_link" href="" title="Lien vers la page reserver de l'Hôte Eau">Reserver</a>
+            </div>
+        </article>        
+    </section>
+    <!-- CONCEPTION ET ARCHITECTURE-->
+    <section class="flex justify_around conception padding_lateral ">
+        <!-- concept -->
+        <article class="width35 img_animation ">
+            <h3>Le concept</h3>
+            <img src="./assets/images/concept.jpg" alt="Chalet">
+            <p>Depuis l'ouverture de ses 4 h&#244;tels en 2012, 4 Éléments s'est démarqué en proposant des établissements exceptionnels dans des lieux uniques, symbolisant les quatre éléments : terre, eau, air et feu. Ces h&#244;tels insolites, construits dans des endroits inattendus à travers la planète, incarnent notre volonté de révolutionner le tourisme en intégrant luxe, aventure et vision à long terme. Chacun de nos établissements offre un environnement et un service uniques, alliant la rigueur de l'h&#244;tellerie de luxe à une proximité quotidienne avec les habitants. Explorez les environs avec des guides experts tels que des ethnologues, astrophysiciens, géologues et climatologues. Ce que nous vous proposons n'est pas un simple "tour", mais une véritable révolution.</p>
+        </article>
+        <!-- architecture -->
+        <article class="width35 img_animation">
+            <h3>L'architecture</h3>
+            <p>L'architecture innovante constitue une étape supplémentaire vers l'exploration de l'Espace, représentant l'extension de notre civilisation vers ses aspects les plus avancés. S'immerger dans l'un de nos h&#244;tels, c'est embrasser une expérience sensorielle où l'on peut se ressourcer au contact des matières représentatives des quatre éléments. C'est une opportunité de se découvrir en harmonie avec la terre, l'air, l'eau et le feu. Notre approche unique vise à transcender les frontières traditionnelles du voyage en offrant une expérience qui éveille les sens et connecte les visiteurs à la quintessence de chaque élément. En plongeant dans nos établissements, les clients sont invités à explorer l'intersection fascinante entre l'innovation architecturale etla nature environnante.</p>
+            <img src="./assets/images/architecture.jpg" alt="Façade d'un hôte de luxe">
+        </article>
+    </section>
+    <!-- CREATEUR -->
+    <section class="createur">
+        <article class="flex justify_around padding_lateral">
+            <h3>Le mot du createur</h3>
+            <div class="width35">
+                
+                <i class="fa-solid fa-quote-left"></i>
+                <p>L'architecture innovante représente une avancée vers l'exploration de l'Espace, symbolisant l'extension de notre civilisation vers ses plus grandes aspirations. S'immerger dans nos h&#244;tels, c'est vivre une expérience sensorielle, se ressourcer au contact des matières des quatre éléments. C'est une découverte en harmonie avec la terre, l'air, l'eau et le feu, où chaque détail architectural offre une connexion profonde avec ces éléments fondamentaux. Les témoignages de nos visiteurs soulignent l'impact transformateur de cette expérience immersive, décrivant une reconnexion unique avec la nature et une redécouverte de soi au sein de cet environnement exceptionnel. Cette approche révolutionnaire redéfinit les attentes du voyage, offrant non seulement un hébergement luxueux, mais une véritable aventure sensorielle qui transcende les limites conventionnelles du tourisme.</p>
+                <h5>Trinh Xuan Thuan</h5>
+                <p>Co-fondateur de 4 El&#233;ments</p>
+            </div>
+            <div class="width35 img_createur img_animation">
+                <img src="./assets/images/visage.jpg" alt="Visage de Mr Trinh Xuan Thuan">
+            </div>
+        </article>
+    </section>
+</main>
+    <!-- FOOTER -->
+    <footer class="flex justify_between">
+        <!-- element left -->
+        <div class="width28 column_left">
+            <a href="index.html"><img src="./assets/images/logo/logo-noir.png" alt=""></a>
+            <p> “N’attendez plus pour vivre l’expérience 4 éléments le temps d’une nuit.”</p>
+            <nav>
+                <ul class="flex">
+                    <li><a href="https://www.instagram.com/" title="Lien vers la page Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com" title="Lien vers la page Facebook"><i class="fa-brands fa-square-facebook"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- element center -->
+        <div class="width28 column_center">
+            <h4>Contact</h4>
+            <address>
+                <p><span>Adresse :</span> 8 avenue exemple</p>
+                <p><span>Ouverture :</span> tous les jours de 9h &#224; 20h30</p>
+                <a href="tel:330828028002" title="Lien vers le numero de telephone"> <span>T&#233;l :</span> 33 08 280 28002</a>
+            </address>
+            <a class="btn_link" href="" title="Lien vers la page de reservervation">Reserver en ligne</a>
+        </div>
+        <!-- element right -->
+        <nav class="width28 column_right">
+            <ul>
+                <li><a href="" title="Lien vers la page Call to action reservation ">Call to action reservation</a></li>
+                <li><a href="" title="Lien vers la page Mentions légales">Mentions légales</a></li>
+                <li><a href="" title="Lien vers la page Crédits">Crédits</a></li>
+                <li><a href="" title="Lien vers la page CGV">CGV</a></li>
+                <li><a href="" title="Lien vers la page Confidentialité">Confidentialité</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
