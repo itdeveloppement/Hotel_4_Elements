@@ -150,7 +150,7 @@ nav ul li{
 .padding_lateral {
     padding: 0 10% 0 10%;   
 }
-.air, .terre, .eau, .infos, .conception, .offres, .animation, .createur {
+.air, .terre, .eau, .infos, .conception, .offres, .animation, .createur, #formReservation {
     padding-top: 10%;
 }
 
@@ -373,7 +373,7 @@ nav ul li{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-select, input{
+#formAccueil select, #formAccueil input{
     width: 100%;
     -webkit-appearance: none;
     height: 40px;
@@ -382,9 +382,9 @@ select, input{
     background-color: var(--inputColor);
     color: var(--primaryColor);
     font-size: 1rem;
-    padding: 2%;
+    padding: 2%; 
 }
-label {
+#formAccueil label {
     width: 100%;
     font-family: var(--karlaFont);
     font-size: 1rem;
@@ -623,6 +623,83 @@ label {
     padding-bottom: 5%;
     margin-left:15%;
     margin-top: 3%;
+}
+
+/*FORMULAIRE RESERVATION */
+
+.reservation {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
+
+}
+#formReservation h3 {
+    margin: 5% 0 5% 0;
+    
+}
+fieldset {
+    border: none; 
+}
+
+#formReservation input, #formReservation select {
+    -webkit-appearance: checkbox;
+    border: none;
+    background-color: var(--inputColor);
+    color: var(--primaryColor);
+    font-size: 1rem;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 400px;
+    height: 35px;
+}
+
+#formReservation label, .supplements div>div {
+    font-family: var(--karlaFont);
+    color: var(--secondaryColor);
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 300px;
+    text-align: start;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0 10px 0;
+    height: 35px;
+}
+
+#formReservation input[type="checkbox"] {
+    margin: 0 20px; 
+    padding: 0; 
+    width: auto; 
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+}
+
+/* cicilité */
+#formReservation fieldset>div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+}
+.supplements div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.supplements div>div {
+  width: 200px;
+}
+
+#formReservation input[type="submit"] {
+    width: 300px;
+    margin-top: 5%;
+   
+}
+#formReservation div {
+    text-align: end;
 }
 
 
