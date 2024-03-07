@@ -641,10 +641,10 @@ fieldset {
     border: none; 
 }
 
-#formReservation input, #formReservation select {
+#formReservation input:not(.btn_button), #formReservation select {
     -webkit-appearance: checkbox;
     border: none;
-    background-color: var(--inputColor);
+    /* background-color: var(--inputColor); */
     color: var(--primaryColor);
     font-size: 1rem;
     margin: 10px;
@@ -676,6 +676,11 @@ fieldset {
     height: 25px;
 }
 
+#formReservation .btn_envoyer {
+    /* display:none; */
+}
+
+
 /* cicilité */
 #formReservation fieldset>div {
     width: 100%;
@@ -692,17 +697,46 @@ fieldset {
 .supplements div>div {
   width: 200px;
 }
-
-#formReservation input[type="submit"] {
-    width: 300px;
-    margin-top: 5%;
-   
-}
 #formReservation div {
     text-align: end;
 }
+/* regime alimentaire */
+.active {
+    display: none;
+}
 
 
+/* traitement des erreur */
+.input-erreur {
+    background-color: rgb(232, 152, 152);
+}
+
+.p-erreur {
+    color: red
+}
+.d-none {
+    display: none;
+}
+/* moadal */
+
+.modal {
+    color: var(--secondaryColor);
+    display: none;
+    position:fixed;
+    top: 90px; 
+    left: 0px;
+    background-color: var(--bgkColor);
+}
+
+.modal ul { 
+    list-style-type: none;
+    font-family: var(--karlaFont);
+}
+.modal .btn {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5%;
+}
 /* -- RESPONSIVE -- */
 
 @media screen and (max-width:900px) { 

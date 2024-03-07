@@ -57,7 +57,7 @@
 
   
     <form action="" method="GET" id="formReservation" >
-        <h3>Qui vous etes ?</h3>
+        <h3>Informations generales</h3>
         <!-- section civilité -->
         <fieldset class="flex civilites">
             <!-- nom -->
@@ -79,13 +79,14 @@
             <div>
                 <label for="telephone">Numéro de téléphone :</label>
                 <input type="tel" id="telephone" name="telephone">
+                <p class="p-erreur d-none" id="erreur-telephone"></p>
             </div>
             <!-- adresse numero rue-->
             <div>
                 <label for="numRue">Numero de la rue :</label>
                 <input type="number" id="numRue" name="numRue">
             </div>
-            <!-- adresse nomrue-->
+            <!-- adresse nom rue-->
             <div>
                 <label for="nomRue">Nom de la rue :</label>
                 <input type="text" id="nomRue" name="nomRue">
@@ -102,22 +103,22 @@
             </div>
         </fieldset>
 
-        <h3>Votre reservation</h3>
+        <h3>Reservation</h3>
         <!-- section elements de reservation -->
         <fieldset class="eltsReservation flex">
-            <!-- chambres-->
+            <!-- hotel -->
             <div>
                 <label for="chambres">Chambres</label>
                 <select name="chambres" id="chambres">
                     <option value="">choisir</option>
-                    <option value="igloos1">Chambre igloos</option>
-                    <option value="laponne">Chambre Laponne</option>
+                    <option value="igloos">Chambres Igloos</option>
+                    <option value="laponne">Chambres Laponne</option>
                 </select>
             </div>
              <!-- nombre de personnes -->
              <div>
                 <label for="nombPersonne">Nombre de personne :</label>
-                <input type="number" id="nombPersonne" name="nombPersonne">
+                <input type="number" id="nombPersonne" name="nombPersonne"  min="1" max="2">
             </div>
              <!-- date arrivée-->
              <div>
@@ -138,46 +139,48 @@
              <div>
                 <label for="chauffeur">Chauffeur</label>
                 <div>11 € / jours</div>
-                <input type="checkbox" name="chauffeur" id="chauffeur" value="la valeur">
+                <input type="checkbox" name="chauffeur" id="chauffeur">
             </div>
             <!-- petit déjeuner  -->
             <div>
                 <label for="ptDejeuner">Petit déjeuner</label>
                 <div>15€ / personnes /jours</div>
-                <input type="checkbox" name="ptDejeuner" id="ptDejeuner" value="la valeur">
+                <input type="checkbox" name="ptDejeuner" id="ptDejeuner">
             </div>
             <!-- repas midi -->
             <div>
                 <label for="repasMidi">Repas midi</label>
                 <div>25€ /personnes/ repas</div>
-                <input type="checkbox" name="repasMidi" id="repasMidi" value="la valeur">
+                <input type="checkbox" name="repasMidi" id="repasMidi">
             </div>
             <!-- repas soir -->
             <div>
                 <label for="repasSoir">Repas soir</label>
                 <div>25€ /personnes/ repas</div>
-                <input type="checkbox" name="repasSoir" id="repasSoir" value="la valeur">
+                <input type="checkbox" name="repasSoir" id="repasSoir">
             </div>
             <!-- repas ponctuel -->
             <div>
                 <label for="repasPonctuel">Repas ponctuel</label>
                 <div>25€ /personnes/ repas</div>
-                <input type="checkbox" name="repasPonctuel" id="repasPonctuel" value="la valeur">
+                <input type="checkbox" name="repasPonctuel" id="repasPonctuel" >
                 <p>Repas ponctuel : le prix du repas ne sera pas comptabilisé dans la réservation mais sera dû directement auprès du service de restauration, prévenir la veille</p>
             </div>
             <!-- Visites guidée -->
             <div>
-                <label for="chauffeur">Visites guidée</label>
+                <label for="visite">Visites guidée</label>
                 <div>20€ par visite</div>
-                <input type="checkbox" name="chauffeur" id="chauffeur" value="la valeur">
+                <input type="checkbox" name="visite" id="visite">
                 <p>La visite guidée du domaine et du parc naturel alentour</p>
             </div>
         </fieldset>
 
+         
         <!-- Si l’option petit déjeuner ou repas sont cochés  -->
-        <h3>Régime et restriction alimentaire</h3>
-        <!-- regime alimentaire -->
-        <fieldset class="flex">
+        
+        <!-- regime alimentaire apparition à la demande -->
+        <fieldset class="regime active flex">
+            <h3>Régime et restriction alimentaire</h3>
             <p>Avez vous des restrictions alimentaires ?</p>
             <!-- sans gluten -->
             <div>
@@ -189,24 +192,63 @@
                 <label for="lactose">Sans lactose</label>
                 <input type="checkbox" name="lactose" id="lactose" value="la valeur">
             </div>
-            <!-- sans lactose -->
-            <div>
-                <label for="lactose">Sans lactose</label>
-                <input type="checkbox" name="lactose" id="lactose" value="la valeur">
-            </div>
             <!-- autre alergie  -->
             <div>
                 <label for="autresAlergie">Autres allergies et intolérances </label>
                 <input type="text" name="autresAlergie" id="autresAlergie">
             </div>
-            
         </fieldset>
         <div>
-            <input type="submit" value="Envoyer" >
+            <input class="btn_button btn_envoyer" type="submit" value="Envoyer" >
         </div>
-        
-
     </form>
+
+    <!-- modale -->
+    <!-- resumé des information -->
+     <!-- section civilité -->
+     <div class="modal">
+        <h5>Informations generales</h5>
+        <ul>
+            <li>Nom : <span id="nomMod"></span></li>
+            <li>Prenom : <span id="prenomMod"></span></li>
+            <li>E-mail : <span id="emailMod"></span></li>
+            <li>Telephone : <span id="telMod"></span></li>
+            <li>Numero de rue : <span id="numRueMod"></span></li>
+            <li>Nom de rue : <span id="nomRueMod"></span></li>
+            <li>Code postal : <span id="codePostalMod"></span></li>
+            <li>Ville : <span id="villeMod"></span></li>
+        </ul>
+        <h5>Reservation</h5>
+        <ul>
+            <li>Chambre : <span id="chambreMod"></span></li>
+            <li>Nombre de personne : <span id="nombPersonneMod"></span></li>
+            <li>Date arrivée : <span id="dateArriveeMod"></span></li>
+            <li>Date depart : <span id="dateDepartMod"></span></li>
+        </ul>
+        <h5>Services supplémentaires</h5>
+        <ul>
+            <li>Chauffeur : <span id="chauffeurMod"></span></li>
+            <li>Petit dejeuner : <span id="ptDejeunerMod"></span></li>
+            <li>Repas de midi : <span id="repasMidiMod"></span></li>
+            <li>Repas du soir : <span id="repasSoirMod"></span></li>
+            <li>Repas ponctuel : <span id="repasPonctuelMod"></span></li>
+            <li>Visite guidée : <span id="visiteMod"></span></li>
+        </ul>
+        <h5>Régime et restriction alimentaire</h5>
+        <ul>
+            <li>Sans gluten : <span id="glutenMod"></span></li>
+            <li>Sans lactose : <span id="lactoseMod"></span></li>
+            <li>Autres alergies : <span id="autresAlergieMod"></span></li>
+        </ul>
+        <div>
+            <h5>Tarification</h5>
+            <p>traiter tous compris : <span id="tarification"></span>€</p>
+        </div>
+        <div class="btn">
+            <a class="btn_link btn_button btn_annuler" href="formReservation.html">Annuler</a>
+            <input class="btn_button btn_payement" type="submit" value="Payement" >
+        </div>
+    </div>
 
 
     </main>
@@ -244,5 +286,6 @@
             </ul>
         </nav>
     </footer>
+    <script src="./assets/js/app.js" defer></script>
 </body>
 </html>
