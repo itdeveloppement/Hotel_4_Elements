@@ -277,24 +277,6 @@ function dataRegime () {
 
 }
 /* ------ BOUTON MODALE ET FORMUMAIRE -------*/
-    // btn envoyer formulaire vers modale => 
-    // ciblage
-    let btn_envoyer = document.querySelector(".btn_envoyer")
-    // ecouteur
-    btn_envoyer.addEventListener("click", (event)=>{
-        // pour ne pas recharger la page
-        event.preventDefault();
-        // element à ouvrir portant la class modal
-        let classElement = "modal";
-        openOrCloseElement(classElement);
-        // integration des données dans la modale
-        dataModaleInfosGenerale();
-        dataReservation () ;
-        dataService ();
-        dataRegime();
-        tarification () 
-
-    });
 
     // btn annuler modale => 
     // ciblage
@@ -324,40 +306,396 @@ function dataRegime () {
  
 /* VALIDATION DES DONNEE A LA SAISIE*/
 
-// ciblage
-let telephone = document.getElementById("telephone");
+// ciblage section info generale
 
-// ecouteur
-telephone.addEventListener("change", ()=>{
+let nomVerif = document.getElementById("nom");
+let prenomVerif = document.getElementById("prenom");
+let telephoneVerif = document.getElementById("telephone");
+let emailVerif = document.getElementById("email");
+let nomRueVerif = document.getElementById("nomRue");
+let numRueVerif = document.getElementById("numRue");
+let codePostalVerif = document.getElementById("codePostal");
+let villeVerif = document.getElementById("ville");
+// ciblage section reservation
+
+let nombPersonneVerif = document.getElementById("nombPersonne");
+let dateArriveeVerif = document.getElementById("dateArrive");
+let dateDepartVerif = document.getElementById("dateDepart");
+
+// ecouteur infos generale
+
+nomVerif.addEventListener("change", ()=>{
+    testNom ();
+});
+telephoneVerif.addEventListener("change", ()=>{
     testTelephone ();
 });
+emailVerif.addEventListener("change", ()=>{
+    testEmail ();
+});
+prenomVerif.addEventListener("change", ()=>{
+    testPrenom ();
+})
+numRueVerif.addEventListener("change", ()=>{
+    testNumRue ();
+})
+nomRueVerif.addEventListener("change", ()=>{
+    testNomRue ();
+})
+codePostalVerif.addEventListener("change", ()=>{
+    testCodePostal ();
+})
+villeVerif.addEventListener("change", ()=>{
+    testVille ();
+})
 
-// validation champs numero de telephone
+// ecouteur reservation
 
-function testTelephone () {
-    console.log("test1")
+nombPersonneVerif.addEventListener("change", ()=>{
+    testNombPersonne ();
+})
+dateArriveeVerif.addEventListener("change", ()=>{
+    testDateArrivee ();
+})
+dateDepartVerif.addEventListener("change", ()=>{
+    testDateDepart ();
+})
+
+// verification infos generales
+
+/** validation des données "nom" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testNom(){
+    let reg=/^[a-zA-ZÀ-ÿ'-]+(?:\s[a-zA-ZÀ-ÿ'-]+)*$/
+     // si champ vide
+    if(nomVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("nom", "Ce champs ne peux pas être vide")
+        return false
+    
+    }else if(reg.test(nomVerif.value)===false){
+         // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+         afficherMessage ("nom", "Ce champ comporte des caractère non autorisés")
+            return false
+        }else if(hasCode(nomVerif.value)){ // ne fonctionne pas
+            //est ce que notre utilisateur n'est pas entrain d'injecter du code
+            afficherMessage("nom", "Vous ne pouvez pas injecter du code ici!")
+            return false
+        }else if((nomVerif.value.length >=50) || (nomVerif.value.length < 2) ){
+            console.log(nomVerif.value.length)
+            // si la chaine ne fait pas plus de x caracteres
+            afficherMessage ("nom", "vous devez indiquer un à 50 caractere")
+            return false
+        }
+    enleveMessage("nom")
+    return true
+}
+/** validation des données "prenom" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testPrenom(){
+    let reg=/^[a-zA-ZÀ-ÿ'-]+(?:\s[a-zA-ZÀ-ÿ'-]+)*$/
+     // si champ vide
+    if(prenomVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("prenom", "Ce champs ne peux pas être vide")
+        return false
+    
+    }else if(reg.test(prenomVerif.value)===false){
+         // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+         afficherMessage ("prenom", "Ce champ comporte des caractère non autorisés")
+            return false
+        }else if(hasCode(prenomVerif.value)){ // ne fonctionne pas
+            //est ce que notre utilisateur n'est pas entrain d'injecter du code
+            afficherMessage("prenom", "Vous ne pouvez pas injecter du code ici!")
+            return false
+        }else if(prenomVerif.value.length >=40){
+            // si la chaine ne fait pas plus de x caracteres
+            afficherMessage ("prenom", "Vous avez tapé un prenom trop long!")
+            return false
+        }
+    enleveMessage("prenom")
+    return true
+}
+/** validation des données "numero de telephone" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testTelephone () {   
+    // doit etre au format xx xx xx xx xx / chaque caractere en biniome doit etre des chiffres
+    let reg= /^\d{2} \d{2} \d{2} \d{2} \d{2}$/;
     // si le champs est vide
-    if (telephone.value == "") {
-        // appel de la fonction afficher message
-        afficherMessage("telephone", "Un numero de telephone est requis")
+    if (telephoneVerif.value == "") {
+        afficherMessage("telephone", "Un numero de telephone est requis");
+        return false;
+    } else if (reg.test(telephoneVerif.value) === false) {
+        afficherMessage("telephone", "le format demandé est xx xx xx xx xx");
+        return false;
     }
-    // enlever le message
-    enleveMessage("telephone")
+ enleveMessage("telephone")
+ return true;
+}
+/** validation des données saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testEmail () {   
+    // dooit etre au format exemple-.@exemple.extension
+    let reg= /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+    // si le champs est vide
+    if (emailVerif.value == "") {
+        afficherMessage("email", "L'email doit etre rempli");
+        return false;
+    } else if (reg.test(emailVerif.value) === false) {
+        afficherMessage("email", "L'email doit etre au format exemple@exemple.extension");
+        return false;
+    }
+ enleveMessage("email")
+ return true;
+}
+/** validation des données "nom" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testNomRue(){
+    let reg=/^[a-zA-ZÀ-ÿ'-]+(?:\s[a-zA-ZÀ-ÿ'-]+)*$/
+     // si champ vide
+    if(nomRueVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("nomRue", "Ce champs ne peux pas être vide")
+        return false
+    
+    }else if(reg.test(nomRueVerif.value)===false){
+         // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+         afficherMessage ("nomRue", "Ce champ comporte des caractère non autorisés")
+            return false
+        }else if(hasCode(nomRueVerif.value)){ // ne fonctionne pas
+            //est ce que notre utilisateur n'est pas entrain d'injecter du code
+            afficherMessage("nomRue", "Vous ne pouvez pas injecter du code ici!")
+            return false
+        }else if((nomVerif.value.length >=50) || (nomVerif.value.length < 2) ){
+            // si la chaine ne fait pas plus de x caracteres
+            afficherMessage ("nomRue", "vous devez indiquer un à 50 caractere")
+            return false
+        }
+    enleveMessage("nomRue")
+    return true
+}
+/** validation des données "numero rue" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testNumRue(){
+    let reg=/^\d+$/;
+     // si champ vide
+    if(numRueVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("numRue", "Ce champs ne peux pas être vide")
+        return false
+    }else if(reg.test(numRueVerif.value)===false){
+         // si l'utilisateur a bien utliser des chiffres
+         afficherMessage ("numRue", "Ce champ comporte des caractère non autorisés")
+            return false
+        }else if(hasCode(numRueVerif.value)){ // ne fonctionne pas
+            //est ce que notre utilisateur n'est pas entrain d'injecter du code
+            afficherMessage("numRue", "Vous ne pouvez pas injecter du code ici!")
+            return false
+        }else if(numRueVerif.value.length >=40){
+            // si la chaine ne fait pas plus de x caracteres
+            afficherMessage ("numRue", "Vous avez tapé un numero trop long!")
+            return false
+        }
+    enleveMessage("numRue")
+    return true
+}
+/** validation des données "Nom Rue" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testCodePostal(){
+    let reg=/^[a-zA-ZÀ-ÿ'-]+(?:\s[a-zA-ZÀ-ÿ'-]+)*$/
+     // si champ vide
+    if(nomRueVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("nomRue", "Ce champs ne peux pas être vide")
+        return false
+    
+    }else if(reg.test(nomRueVerif.value)===false){
+         // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+         afficherMessage ("nomRue", "Ce champ comporte des caractère non autorisés")
+            return false
+        }else if(hasCode(nomRueVerif.value)){ // ne fonctionne pas
+            //est ce que notre utilisateur n'est pas entrain d'injecter du code
+            afficherMessage("nomRue", "Vous ne pouvez pas injecter du code ici!")
+            return false
+        }else if(nomRueVerif.value.length >=40){
+            // si la chaine ne fait pas plus de x caracteres
+            afficherMessage ("nomRue", "Vous avez tapé un nom trop long!")
+            return false
+        }
+    enleveMessage("nomRue")
+    return true
+}
+/** validation des données "numero rue" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testCodePostal(){
+    let reg=/^[0-9]{5}$/;
+     // si champ vide
+    if(codePostalVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("codePostal", "Ce champs ne peux pas être vide")
+        return false
+    }else if(reg.test(codePostalVerif.value)===false){
+         // si l'utilisateur a bien utliser des chiffres
+         afficherMessage ("codePostal", "Ce champ doit comporter cinq chiffres")
+            return false
+        }else if(hasCode(codePostalVerif.value)){ // ne fonctionne pas
+            //est ce que notre utilisateur n'est pas entrain d'injecter du code
+            afficherMessage("codePostal", "Vous ne pouvez pas injecter du code ici!")
+            return false
+        }else if(codePostalVerif.value.length >=10){
+            // si la chaine ne fait pas plus de x caracteres
+            afficherMessage ("codePostal", "Vous avez tapé un numero trop long!")
+            return false
+        }
+    enleveMessage("codePostal")
+    return true
+}
+/** validation des données "Ville" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testVille(){
+    let reg=/^[a-zA-ZÀ-ÿ'-]+(?:\s[a-zA-ZÀ-ÿ'-]+)*$/
+     // si champ vide
+    if(villeVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("ville", "Ce champs ne peux pas être vide")
+        return false
+    
+    }else if(reg.test(villeVerif.value)===false){
+         // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+         afficherMessage ("ville", "Ce champ comporte des caractère non autorisés")
+            return false
+        }else if(hasCode(villeVerif.value)){ // ne fonctionne pas
+            //est ce que notre utilisateur n'est pas entrain d'injecter du code
+            afficherMessage("ville", "Vous ne pouvez pas injecter du code ici!")
+            return false
+        }else if(villeVerif.value.length >=40){
+            // si la chaine ne fait pas plus de x caracteres
+            afficherMessage ("ville", "Vous avez tapé un nom trop long!")
+            return false
+        }
+    enleveMessage("ville")
+    return true
 }
 
-// si le champs comporte autres caracteres que des chiffres sauf les espaces
+// verification reservation
 
+/** validation des données "nombre de personne" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testNombPersonne(){
+    let reg=/^[12]$/;
+     // si champ vide
+    if(nombPersonneVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("nombPersonne", "Ce champs ne peux pas être vide")
+        return false
+    } else if(reg.test(nombPersonneVerif.value)===false){
+        // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+        afficherMessage ("nombPersonne", "La reservation est valide pour 1 ou 2 personne")
+           return false
+         }
+    enleveMessage("nombPersonne")
+    return true
+}
+/** validation des données "date arrivee" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testDateArrivee(){
+    // si la date est inferieur à la date du jour
+    // si l'année fait plus de 4 caracteres
+    console.log(dateArriveeVerif.value)
+    let reg=/^[12]$/;
+     // si champ vide
+    if(dateArriveeVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("nombPersonne", "Ce champs ne peux pas être vide")
+        return false
+    } else if(reg.test(nombPersonneVerif.value)===false){
+        // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+        afficherMessage ("nombPersonne", "La reservation est valide pour 1 ou 2 personne")
+           return false
+         }
+    enleveMessage("nombPersonne")
+    return true
+}
+/** validation des données "nombre de personne" saisies par l'utilisateur
+ * 
+ * @returns {boolean} false si erreur de saisie
+ * @returns {boolean} true aucune erreur de saisie
+ */
+function testDateDepart(){
+    let reg=/^[12]$/;
+     // si champ vide
+    if(nombPersonneVerif.value==""){
+        // affiche le message d'erreur
+        // on met la bordure rouge sur l'input
+        afficherMessage ("nombPersonne", "Ce champs ne peux pas être vide")
+        return false
+    } else if(reg.test(nombPersonneVerif.value)===false){
+        // si l'utilisateur a bien utliser des caractere alphanumerique avec accentuation possible
+        afficherMessage ("nombPersonne", "La reservation est valide pour 1 ou 2 personne")
+           return false
+         }
+    enleveMessage("nombPersonne")
+    return true
+}
 
-// a la soumission du formulaire
-    // rappeller les fonction de test
-
+/** recherche dans une chaine de caractere si il y a une balise script
+ * 
+ * @param {string} text 
+ * @returns true : y'a du code
+ * @returns false :y'a pas de code
+ */
+function hasCode(text){
+    let reg = /<script/
+    return reg.test(text);
+}
 /** affiche le message d'erreur
  * 
  * @param {*} id  l'id de l'element message
  * @retur : rien
  */
 function afficherMessage (id, messageErreur) {
-   
     // affiche la bordure rouge sur l'intput
     let messageInput = document.getElementById(id);
     messageInput.classList.add("input-erreur");
@@ -381,3 +719,61 @@ function enleveMessage (id) {
     // enleve le message
     messageP.classList.add("d-none");
 }
+
+// A finir 
+    // notament controle des champs date
+    // selection hotel
+    // forma modale
+
+/* soumission du formulaure */
+
+// A l'evenement soumission du formulaire 
+// relance les teste
+// si les testes sont ok 
+    // ouverture moadle
+    // affichage
+    // si click sur paiement = envoi formulaire
+    // si click sur annuler retour au formulaire / fermeture modale
+
+let formReservation = document.getElementById('formReservation')
+
+formReservation.addEventListener("submit",(e)=>{
+    e.preventDefault()
+    let test1 = testNom()
+    let test2 = testPrenom ();
+    let test3 = testTelephone()
+    let test4 = testEmail()
+    let test5 = testNumRue ();
+    let test6 = testNomRue ();
+    let test7 = testCodePostal ();
+    let test8 = testVille ();
+    let test9 = testNombPersonne ();
+    
+    // si les testes prealable sont validés (true)
+    if(test1===true && 
+        test2 === true && 
+        test3 ===true && 
+        test4 === true &&
+        test5 === true &&
+        test6 === true &&
+        test7 === true &&
+        test8 === true &&
+        test9 === true 
+        ){
+        
+        // ouvrir la modale
+        let classElement = "modal";
+        openOrCloseElement(classElement);
+        // integration des données dans la modale et affichage
+        dataModaleInfosGenerale();
+        dataReservation () ;
+        dataService ();
+        dataRegime();
+        tarification () 
+
+        // au click sur paiement je soumais le formulaire
+        document.querySelector(".btn_payement").addEventListener("click", function() {
+            formReservation.submit();
+    } 
+)};
+});

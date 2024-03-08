@@ -723,11 +723,21 @@ fieldset {
     color: var(--secondaryColor);
     display: none;
     position:fixed;
-    top: 90px; 
+    top: 85px; 
     left: 0px;
     background-color: var(--bgkColor);
+    padding: 0px 3% 10px 3%;
+    width: 100%;
+    overflow-y: auto;
+    height: 89vh;
+    
 }
-
+.modal h4 {
+    margin: 2% 0;
+}
+.modal h5 {
+    margin: 2% 0;
+}
 .modal ul { 
     list-style-type: none;
     font-family: var(--karlaFont);

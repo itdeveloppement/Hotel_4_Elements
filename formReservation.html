@@ -55,8 +55,8 @@
     </header>
     <main class="reservation">
 
-  
-    <form action="" method="GET" id="formReservation" >
+        <!-- obs novalidate = supression du format par defaut html pour gestion en js -->
+    <form action="" method="GET" id="formReservation" novalidate>
         <h3>Informations generales</h3>
         <!-- section civilité -->
         <fieldset class="flex civilites">
@@ -64,16 +64,19 @@
             <div>
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom">
+                <p class="p-erreur d-none" id="erreur-nom"></p>
             </div>
             <!-- prenom -->
             <div>
                 <label for="prenom">Prénom :</label>
                 <input type="text" id="prenom" name="prenom">
+                <p class="p-erreur d-none" id="erreur-prenom"></p>
             </div>
             <!-- adresse email-->
             <div>
                 <label for="email">Adresse e-mail :</label>
                 <input type="email" id="email" name="email">
+                <p class="p-erreur d-none" id="erreur-email"></p>
             </div>
             <!-- adresse telephone-->
             <div>
@@ -85,21 +88,25 @@
             <div>
                 <label for="numRue">Numero de la rue :</label>
                 <input type="number" id="numRue" name="numRue">
+                <p class="p-erreur d-none" id="erreur-numRue"></p>
             </div>
             <!-- adresse nom rue-->
             <div>
                 <label for="nomRue">Nom de la rue :</label>
                 <input type="text" id="nomRue" name="nomRue">
+                <p class="p-erreur d-none" id="erreur-nomRue"></p>
             </div>
             <!-- adresse code postal-->
             <div>
                 <label for="codePostal">Code postal :</label>
                 <input type="text" id="codePostal" name="codePostal">
+                <p class="p-erreur d-none" id="erreur-codePostal"></p>
             </div>
             <!-- adresse ville-->
             <div>
                 <label for="ville">Ville :</label>
                 <input type="text" id="ville" name="ville">
+                <p class="p-erreur d-none" id="erreur-ville"></p>
             </div>
         </fieldset>
 
@@ -118,17 +125,20 @@
              <!-- nombre de personnes -->
              <div>
                 <label for="nombPersonne">Nombre de personne :</label>
-                <input type="number" id="nombPersonne" name="nombPersonne"  min="1" max="2">
+                <input type="text" id="nombPersonne" name="nombPersonne" format>
+                <p class="p-erreur d-none" id="erreur-nombPersonne"></p>
             </div>
              <!-- date arrivée-->
              <div>
                 <label for="dateArrive">Date d'arrivée</label>
                 <input type="date" name="dateArrive" id="dateArrive">
+                <p class="p-erreur d-none" id="erreur-dateArrivee"></p>
             </div>
              <!-- date depart-->
              <div>
                 <label for="dateDepart">Date de départ</label>
                 <input type="date" name="dateDepart" id="dateDepart">
+                <p class="p-erreur d-none" id="erreur-dateDepart"></p>
             </div>
         </fieldset>
 
@@ -207,6 +217,7 @@
     <!-- resumé des information -->
      <!-- section civilité -->
      <div class="modal">
+        <h4>Informations de reservation</h4>
         <h5>Informations generales</h5>
         <ul>
             <li>Nom : <span id="nomMod"></span></li>
@@ -246,7 +257,8 @@
         </div>
         <div class="btn">
             <a class="btn_link btn_button btn_annuler" href="formReservation.html">Annuler</a>
-            <input class="btn_button btn_payement" type="submit" value="Payement" >
+            <!-- mettre un button car il ne envoit rien / pas dans un formulaire-->
+            <p class="btn_button btn_payement">Paiement</p>
         </div>
     </div>
 
